@@ -1,0 +1,231 @@
+{% extends 'base.html' %}
+{%block content%}
+{% load static %}
+<style>
+    
+        body{
+        margin: 0;
+        }
+        header{
+        color:blue;
+        padding:10px;
+        margin:10px;
+        text-align: center;
+        font-family: "Comic Sans Ms"
+        }
+        nav{
+        overflow:hidden;
+        background-color:grey;
+        }
+        nav a{
+        float: left;
+        color:#fff;
+        padding: 14px 16px;
+        text-decoration: none;
+        font-family:Helvetica;
+        }
+        nav a:hover{
+        background-color: red;
+        color: white;
+        }
+        header p{
+        color:#672660;
+        }
+        ol li{
+        color:red;
+        font-size:150%;
+        font-family:fantasy;
+        }
+        ol p{
+        color: rgb(0, 0, 0);
+        font-family: courier;
+        }
+        img{
+        margin:10px;
+        padding: center;
+        }
+        footer{
+        text-align: center;
+        clear: both;
+        background-color: grey;
+        color: white;
+        font-family: "courier";
+        padding:20px;
+        margin:10px;
+        }
+        input[type=text], select, textarea {
+         width: 100%;
+         padding: 12px;
+         border: 1px solid #ccc;
+         margin-top: 6px;
+         margin-bottom: 16px;
+         resize: vertical;
+        }
+        input[type=submit] {
+         background-color: #4CAF50;
+         color: white;
+         padding: 12px 20px;
+         border: none;
+         cursor: pointer;
+        }
+        input[type=submit]:hover {
+         background-color: #45a049;
+        }
+        .container {
+         border-radius: 5px;
+         background-color: #f2f2f2;
+         padding: 10px;
+        }
+        .column {
+         float: left;
+         width: 50%;
+         margin-top: 6px;
+         padding: 20px;
+        }
+        .row:after {
+         content: "";
+         display: table;
+         clear: both;
+        }
+</style>
+
+
+<body>
+    <h1 style="text-align: center;color:darkblue;font-family:courier; font-weight:bold">Skin lesion analysis and prediction</h1>
+    <h2 style="text-align: center;">Upload an image.</h2>
+<form style="text-align: center;" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <input type='file' name="document" onchange="readURL(this);" />
+    
+    <input type="submit">
+
+</form>
+<img style="margin-left:750px" id="blah" src="#" alt="your image" /><br>
+<img style="margin-left:750px" src="{% static 'testimages1/img1.jpg' %}" />
+<img style="margin-left:750px" src="{% static 'testimages1/grimg1.jpg' %}" />
+<img style="margin-left:750px" src="{% static 'testimages1/blrimg1.jpg' %}" />
+<img style="margin-left:750px" src="{% static 'testimages1/img2.jpg' %}" />
+
+<h2 style="text-align: center;">Results:</h2>
+<h2 style="text-align: center;color:red">The disease is most probably :{{result}}</h2>
+<h2 style="text-align: center;color:darkred">2nd opinion:{{result2}}</h2>
+<h2 style="text-align: center;color:blue">There is also a Minor chance of :{{result3}}</h2>
+
+    <header>
+    <h1>Different Skin Diseases</h1>
+    <p style="font-family:cursive;">
+    Durga Prasad Pandey,
+    K. Satya Deva,
+    Siddharth Raj Dash,
+    Kunal Kumar
+    </p>
+    </header>
+    
+        
+    <ol type="1">
+    <li> Actinic keratosis (AK) </li>
+    <img  src="{% static 'lesionsamples/aikectest.jpg' %}">
+    <p>
+    Actinic keratosis (AK), sometimes called solar keratosis or senile keratosis,is a pre-cancerous area of thick, scaly, or crusty skin. Actinic keratosis is a disorder (-osis) of epidermal keratinocytes that is induced by ultraviolet (UV) light exposure (actin-). These growths are more common in fair-skinned people and those who are frequently in the sun. They are believed to form when skin gets damaged by UV radiation from the sun or indoor tanning beds, usually over the course of decades. Given their pre-cancerous nature, if left untreated, they may turn into a type of skin cancer called squamous cell carcinoma. Untreated lesions have up to a 20% risk of progression to squamous cell carcinoma, so treatment by a dermatologist is recommended. </p>
+    <li> Basal cell carcinoma </li>
+    <img  src="{% static 'lesionsamples/bcctest.jpg' %}">
+    <p>
+    Basal cell carcinoma is a type of skin cancer. Basal cell carcinoma begins in the basal cells — a type of cell within the skin that produces new skin cells as old ones die off.
+    Basal cell carcinoma often appears as a slightly transparent bump on the skin, though it can take other forms. Basal cell carcinoma occurs most often on areas of the skin that are exposed to the sun, such as your head and neck.
+    </p>
+    
+    <li> Seborrhoeic keratosis </li>
+    <img  src="{% static 'lesionsamples/bkltest.jpg' %}">
+    <p>
+    Seborrhoeic keratosis is a harmless warty spot that appears during adult life as a common sign of skin ageing. Some people have hundreds of them.
+    
+    Seborrhoeic keratosis (American spelling - seborrheic keratosis) is also called SK, basal cell papilloma, senile wart, brown wart, wisdom wart, or barnacle.  The descriptive term, benign keratosis, is a broader term that is used to include the following related scaly skin lesions:
+    
+    Seborrhoeic keratosis 
+    Solar lentigo (which can be difficult to distinguish from a flat seborrhoeic keratosis)
+    Lichen planus-like keratosis (which arises from a seborrhoeic keratosis or a solar lentigo).
+    </p><li> Dermatofibromas </li>
+    <img  src="{% static 'lesionsamples/dftest.jpg' %}">
+    <p>
+    Dermatofibromas are small, harmless growths that appear on the skin. These growths, called nodules, can grow anywhere on the body, but are most common on the arms, lower legs, and upper back.
+    Dermatofibromas are seen in adults but are rare in children. They are more frequent in women than in men and are more common in people with compromised immune systems.
+    Dermatofibromas are harmless growths within the skin that usually have a small diameter. They can vary in color, and the color may change over the years.
+    
+    Dermatofibromas are firm to the touch. They are very dense, and many people say they feel like a small stone underneath or raised above the skin. Most dermatofibromas are painless.
+    
+    Some people experience itching or irritation at the site of the growth, as well as tenderness. Dermatofibromas may also be called benign fibrous histiocytomas.
+    
+     </p>
+    <li> Melanoma </li>
+    <img  src="{% static 'lesionsamples/meltest.jpg' %}">
+    <p>
+    Melanoma, the most serious type of skin cancer, develops in the cells (melanocytes) that produce melanin — the pigment that gives your skin its color. Melanoma can also form in your eyes and, rarely, inside your body, such as in your nose or throat.
+    
+    The exact cause of all melanomas isn't clear, but exposure to ultraviolet (UV) radiation from sunlight or tanning lamps and beds increases your risk of developing melanoma. Limiting your exposure to UV radiation can help reduce your risk of melanoma.
+    
+    </p>
+    <li> Melanocytic nevus </li>
+    <img  src="{% static 'lesionsamples/nactest.jpg' %}">
+    <p>
+    Melanocytic nevi are benign neoplasms or hamartomas composed of melanocytes, [1] the pigment-producing cells that constitutively colonize the epidermis. Melanocytes are derived from the neural crest and migrate during embryogenesis to selected ectodermal sites (primarily the skin and the CNS), but also to the eyes and the ears. Ectopic melanocytes have been identified at autopsy in the gastrointestinal and genitourinary tracts. Congenital melanocytic nevi are thought to represent an anomaly in embryogenesis and, as such, could be considered, at least in a sense, malformations or hamartomas. [2] In contrast, most acquired melanocytic nevi are considered benign neoplasms. Compare the images below. Melanocytic nevi occur in all mammalian species and are especially common in humans, dogs, and horses.
+    </p>
+    
+    </ol>
+    <h3 style="font-family:cursive; margin:30px 0px 0px 30px;"> Wanna Know More About These Disesases ? </h3>
+    <nav>
+    <a href="https://dermoscopedia.org/Actinic_keratosis_/_Bowen%27s_disease_/_keratoacanthoma_/_squamous_cell_carcinoma" target="_blank">Actinic Keratosis (AK)</a>
+    <a href="https://www.skincancer.org/skin-cancer-information/basal-cell-carcinoma/" target="_blank">Basal cell carcinoma</a>
+    <a href="https://dermnetnz.org/topics/seborrhoeic-keratosis/" target="_blank">Seborrhoeic keratosis</a>
+    <a href="https://www.medicalnewstoday.com/articles/318870#what-is-a-dermatofibroma" target="_blank">Dermatofibromas</a>
+    <a href="https://www.mayoclinic.org/diseases-conditions/melanoma/symptoms-causes/syc-20374884" target="_blank">Melanoma</a>
+    <a href="https://emedicine.medscape.com/article/1058445-overview" target="_blank">Melanocytic nevus</a>
+    </nav>
+    <div class="container">
+     <div style="text-align:center">
+     <h2 style="color:#101A1A; font-family:courier;">Contact US</h2>
+     </div>
+     <div class="row">
+     <div class="column">
+     <form action="/action_page.php">
+     <label for="fname">First Name</label>
+     <input type="text" id="fname" name="firstname" placeholder="Your name..">
+     <label for="lname">Last Name</label>
+     <input type="text" id="lname" name="lastname" placeholder="Your last name..">
+     <label for="country">Country</label>
+     <select id="country" name="country">
+     <option value="australia">Australia</option>
+     <option value="canada">Canada</option>
+     <option value="usa">USA</option>
+     <option value="usa">Nepal</option>
+     <option value="usa">India</option>
+     </select>
+     <label for="subject">Subject</label>
+     <textarea id="subject" name="subject" placeholder="Write something.."
+    style="height:20px"></textarea>
+     <input type="submit" value="Submit">
+     </form>
+     </div>
+     </div>
+    </div>
+    <footer>
+    <p> Copyright &copy; 2021</p>
+    </footer>
+    </body>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result)
+                    .width(150)
+                    .height(200);
+            };
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+{% endblock %}

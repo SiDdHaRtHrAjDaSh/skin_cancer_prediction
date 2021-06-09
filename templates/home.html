@@ -1,0 +1,21 @@
+{%extends 'base.html'%}
+
+{%block content%}
+<h1>hello {{name}}!!!</h1>
+
+<form action="add" method="post">
+
+    {% csrf_token %}
+    Enter 1st number: <input type="text" name="num1"><br>
+    Enter 2nd number: <input type="text" name="num2"><br>
+    <input type="submit">
+
+</form>
+<form action="upload" method="post" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <input type="file" name="document">
+    <input type="submit">
+
+</form>
+{%endblock%}
